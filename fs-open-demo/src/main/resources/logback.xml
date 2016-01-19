@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	 
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%-16(%d{MM-dd HH:mm:ss.SSS}) %-5level %logger{1} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="file"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/admin.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>../logs/admin-%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern> %date %level [%thread] %msg%n </pattern>
+		</encoder>
+	</appender>
+    
+     <!-- PROFILER用于打内部执行时间的 -->
+	<appender name="PROFILER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/im-admin.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>../logs/im-admin.%d{yyyy-MM-dd}
+			</FileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-16(%d{MM-dd HH:mm:ss.SSS}) %-5thread %-5level %logger{1} -
+				%msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="org.springframework" level="info" />
+	<logger name="org.hibernate" level="info" />
+	<logger name="log4j.logger.com.opensymphony.xwork2" level="info" />
+ 
+
+	<root level="debug">
+		<appender-ref ref="file" />
+		<appender-ref ref="stdout" />
+	</root>
+</configuration>  

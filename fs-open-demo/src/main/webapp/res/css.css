@@ -1,0 +1,107 @@
+body {font-family:Microsoft Yahei,Verdana,sans-serif,宋体;font-size: 14px;background-color: #fefefc;margin:0px;padding:0;line-height: 1.5;color: black;text-decoration: none;
+}
+
+.menu{position: fixed; width:900px;height:40px;background-color: midnightblue;z-index: 9999;top:0;}
+.center{width:850%;}
+.center h1 {margin-left: 30px;}
+.center h2 {margin-left: 30px;}
+.center h3 {margin-left: 40px;}
+.center ul {margin-left: 30px;}
+table.data_table td {height: 20px;line-height: 20px;} 
+.foot{ clear: both;text-align:center; padding:20px 0;color: #000033;}
+.gold {color: #ffff00!important;font-weight:bold;}
+.red {color: red!important;font-weight:bold;}
+.blue {color: blue!important;}
+.green {color: green!important;}
+.grey {color: grey!important;}
+.strong{font-weight:bold;}
+.hidden{display: none;}
+
+table.ns{border-collapse:collapse;text-align:center;}
+table.ns td{border:#adf 1px solid;height:30px; line-height:30px;}
+table.ns td a{text-decoration:none;color:#205001;}
+table.ns td a{text-decoration:none;color:#205001;}
+table.ns td a:hover{text-decoration:underline;}
+table.ns td a:visited{color:grey;}
+
+form{border: thin solid #A4AA04;padding-bottom: 20px;}
+form.ns{border: thin solid #A4AA04;padding-top: 70px;padding-bottom: 10px;width: 80%;margin: 0 auto;}
+form.ns input,form.ns select,form.ns textarea{padding: 5px;width: 580px;border: 1px solid #E5E5DB;background: #FFF;color: #47433F;}
+form.ns span.form_label {/*float: left;*/display:inline-block; width: 120px;text-align: left;margin-left: 20px;margin-top: 5px;}
+form.ns input.form_button {border: 1px solid;width: 125px;height: 33px;cursor: pointer;background: #269CE9;color: #FFF;}
+form.ns input.form_button_del {border: 1px solid;width: 125px;height: 33px;cursor: pointer;background: #C43C35;color: #FFF;}
+form.ns input.form_button_add {border: 1px solid;width: 125px;height: 33px;cursor: pointer;background: #57A957;color: #FFF;}
+form.ns input.radio {width: 20px; height: 20px;cursor: pointer;margin-left: 10px;}
+form.ns span.radio {width: 10px;text-align: left;margin: 5px 5px 0 0;}
+form.ns textarea {width: 95%;margin: 10px auto;height: 150px;}
+form.ns select{width: 80px;margin-left: 20px;margin-top: 5px;}
+
+.site_maps li {border-bottom: #CAA5F8 1px solid;list-style-type:upper-roman;color:blue;padding-bottom:3px;margin-right:30px;}
+.site_maps a {color:#205001;text-decoration: none;}
+.site_maps a:hover {color:#203001;text-decoration: underline;}
+.site_maps a:visited {color: rgb(122, 93, 93);}
+.index_new li {list-style-type:decimal;}
+
+textarea {height: 100px;width: 80%;margin-left: 50px;}
+
+textarea.crypto {width: 80%;margin-left: 50px;height: 60px;}
+textarea.output {border: 1px dashed #999;padding: 4px;min-height: 0px;}
+input.crypto {width:150px; height:40px;background-color: #ccccff;margin-left: 80px;}
+input.line3p {width:150px; height:40px;background-color: #ccccff;margin-left: 40px;margin-bottom: 10px;}
+.crypto{margin-bottom: 10px;}
+
+#lists {padding:0; margin:7px 0 50px 0px; list-style:none; position:relative; height:25px; float:left; background:url(line.gif) no-repeat 100% 4px; width:100%; z-index:9999;}
+#lists li {display:inline; float:left;; height:28px; background:url(line.gif) no-repeat 0 4px;}
+#lists li a.new {white-space:normal; background:url(new.png) no-repeat 120px 0;}
+#lists li > a {display:block; width:140px; height:28px; text-decoration:none; line-height:20px; font-size:12px; font-weight:bold; text-indent:10px; font-weight:normal; color:#fff; background:url(white_arrow.gif) no-repeat 120px 5px;}
+#lists div {display:none;}
+#lists div.bdsharebuttonbox {display:inline; float:left; height:28px;margin-left:20px;}
+#lists li a:hover {text-decoration:underline; white-space:normal; background:url(white_arrow.gif) no-repeat 120px 0;}
+#lists li:hover > a {text-decoration:underline; white-space:normal; background-position:120px 15px;}
+#lists :hover div {display:block;background:#faebd7; position:absolute; left:0; top:28px; border:1px solid #888; padding-bottom:10px;}
+
+#lists :hover div dl {display:inline; padding:0; margin:0 10px 10px 10px; float:left; width:129px;}
+#lists :hover div dl dt {width:129px; background:#888; text-indent:10px; margin:5px 0 10px 0; text-decoration:none; height:20px; line-height:20px;}
+#lists :hover div dl dt a {text-decoration:none; cursor:default; font-weight:normal; color:#fff;}
+
+#lists :hover div dl dd {padding:0; margin:0;}
+#lists :hover div dl dd a {display:block; text-decoration:none; font-weight:normal; font-size:11px; color:#000; text-indent:10px; line-height:15px;}
+#lists :hover div dl dd a:hover {text-decoration:underline;}
+
+#lists li:hover{position:relative;}
+#lists li:hover div dl, #lists li:hover div dl dt{width:129px;}
+#lists li:hover div.p1 {left:-150px;}
+#lists li:hover div.c1 {background:#ffff99;}
+#lists li:hover div.c2 {background:#ccff99}
+#lists li:hover div.c3 {background:#ccffff}
+#lists li:hover div.c4 {background:#99ff99}
+
+#lists .single:hover div {width:150px;}
+#lists .two:hover div {width:300px;}
+#lists .three:hover div {width:450px;}
+#lists .clear {clear:both;}
+
+.notice_text {
+	position: fixed;
+	left:0;right:0;margin-left:auto;margin-right:auto;top:100px;
+	background-color: #fffff0;
+	z-index: 99999;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+

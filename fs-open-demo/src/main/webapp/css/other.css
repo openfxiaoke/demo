@@ -1,0 +1,365 @@
+/* default */
+body {
+    font-family: "Microsoft Yahei";
+    overflow-y: scroll;
+}
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+    word-break: break-all;
+}
+.table th[align="left"], .table td[align="left"] {
+    text-align: left;
+}
+.table th[align="right"], .table td[align="right"] {
+    text-align: right;
+}
+.table th, .table td a {
+    margin: 0 5px;
+}
+input {
+    width: 186px;
+}
+textarea {
+	resize: none;
+}
+i {
+    margin: 0 3px;
+	color: red;
+    font-style: normal;
+    font-weight: bold;
+}
+em {
+    font-style: normal;
+}
+.btn-upload {
+
+}
+tr.not-found td {
+    padding: 50px 0;
+    color: #b94a48;
+    border-color: #eed3d7;
+    background-color: #f2dede;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.row-fluid .span3 {
+	width: 18%;
+}
+.row-fluid .span9 {
+	width: 79%;
+}
+
+.Wdate {
+	cursor: pointer;
+}
+
+/* 缩略图 */
+.thumbnail {
+    float: left;
+}
+
+/* 提示框 */
+.modal.tips {
+    width: 360px;
+    margin-left: -180px;
+}
+.modal.tips .modal-body {
+    padding: 40px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #c09853;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* layout */
+.container-wide {
+    margin: 0 auto;
+    width: 98%;
+}
+.container-narrow {
+    margin: 0 auto;
+    width: 1008px;
+}
+.main {
+    margin-top: 10px;
+    min-height: 600px;
+}
+.alert {
+    font-size: 14px;
+}
+/* login */
+.login-body .alert-info {
+    font-size: 16px;
+}
+div.center, p.center, img.center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+    display: block;
+    text-align: center;
+}
+.login-header {
+    padding-top: 30px;
+    height: 120px;
+}
+
+/* ui */
+.box {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.box .title {
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	padding: 3px 7px;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	color: #9da0a4;
+	-webkit-border-radius: 4px 0 4px 0;
+	-moz-border-radius: 4px 0 4px 0;
+	border-radius: 4px 0 4px 0;
+}
+.btn-long {
+    width: 80px;
+    margin-right: 10px;
+}
+.form-search .control-group {
+    float: left;
+    width: 300px;
+    margin: 5px 0;
+}
+.form-search .control-submit {
+    float: left;
+    padding-left: 30px;
+    padding-top: 5px;
+}
+.form-search .control-group .control-label {
+    float: left;
+    width: 80px;
+    padding-top: 5px;
+    text-align: right;
+}
+.control-group {
+
+}
+.table-box {
+    min-height: 300px;
+}
+table label {
+    display: inline;
+    font-size: 12px;
+    font-weight: bold;
+}
+table label input[type="checkbox"] {
+    margin: 0 3px 0 0;
+}
+.table tr.info>th {
+    background-color: #d9edf7;
+}
+/* 左侧记录统计 */
+.statistics, .tatalpage {
+    margin: 20px 0;
+    color: #999;
+    background-color: #fff;
+    display: inline-block;
+    padding: 5px 14px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.statistics .label {
+    margin: 0 5px;
+}
+/* 后侧分页 */
+.pagination {
+    font-size: 14px;
+}
+.pagination ul {
+    margin-right: 10px;
+}
+.pagination input {
+    margin: 0;
+    width: 40px;
+}
+
+.layout-vmargin20 {
+    margin: 20px 0;
+}
+
+.login-vcode{
+	cursor: pointer;
+}
+
+/*文件上传*/
+.btn-upload {
+    position: relative;
+
+}
+.btn-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 44px;
+    opacity: 0;
+}
+
+/*错误提示*/
+em.v-error {
+    padding: 2px 2px 2px 17px;
+	margin-left: 5px;
+    font-style: normal;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fcf8e3;
+    background-image: url("../img/ui-error.png");
+    background-repeat: no-repeat;
+    background-position: 2px center;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: red;
+}
+.thumbnail .img40 {
+	max-width: 60px;
+	max-height: 60px;
+}
+.thumbnail .img60 {
+	max-width: 90px;
+	max-height: 90px;
+}
+.thumbnail .img200 {
+	max-width: 250px;
+	max-height: 250px;
+}
+
+/* 升序和降序 */
+.icon-arrow-down.icon-arrow-up {
+	background-position: -289px -96px;
+}
+
+/* 重点文本突出 */
+input.strong {
+	color: red;
+	font-weight: bolder;
+}
+
+input[readonly].Wdate {
+	background-color: white;
+	cursor: pointer;
+}
+
+.rules input {
+	width: 60px;
+	margin: 0 5px;
+}
+
+.rules .icon-minus, .rules .icon-plus {
+	border: 1px solid #cccccc;
+	cursor: pointer;
+}
+.rules .icon-plus {
+	margin-left: 10px;
+}
+.rules .init {
+	margin-left: 21px;
+}
+
+/* 统计 */
+.statis {
+	width: 100%;
+	padding-top: 20px;
+}
+
+.modal-body .control-group .controls span {
+	float: left;
+	margin-top: 6px;
+}
+
+.modal-body .control-group .controls .help-block {
+	float: none;
+}
+
+.fn-cl {
+	clear: left;
+}
+.fn-tc {
+	text-align: center;
+}
+.form-horizontal .control-label.control-label-short {
+	width: 120px;
+}
+
+#setWholesaleModel .modal-body .alert-warning,
+#dDealMedule .modal-body .alert-warning {
+	position: absolute;
+	left: 15px;
+	top: 175px;
+}
+
+.form-index {
+	border-bottom: 1px dashed #ddd;
+}
+.form-index .controls {
+	margin: 20px 0;
+}
+.form-index .imgholder {
+	float: left;
+}
+.form-index .info {
+	margin-left: 340px;
+}
+.form-index .info .info-row {
+
+}
+.form-index .info .info-row button {
+	margin-bottom: 10px;
+}
+.form-index .info .info-row .info-row-long {
+	width: 500px;
+}
+.form-index .info .info-row .info-row-short {
+	width: 100px;
+}
+
+.order-table {
+
+}
+.order-table span.td-row {
+	display: block;
+}
+.order-table span.td-row em {
+	display: inline-block;
+	margin-right: -3px;
+	overflow:hidden;
+	word-wrap:normal;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.modal-body .control-group .controls span.packs-info {
+	display: block;
+	float: none;
+	width: 100%;
+}
+.modal-body .control-group .controls span.packs-info em {
+	display: inline-block;
+	margin-right: -3px;
+	overflow:hidden;
+	word-wrap:normal;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
