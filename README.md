@@ -8,25 +8,27 @@
 ####4.在浏览器中输入http://{ip}:{port}/openDemo/  访问demo应用
  
 ###二、接口说明
-####1.App端跳转到第三方，第三方接收身份态和获取跳转人员信息的入口
-ThirdForwardController.handleAppForward()方法
+####1.纷享平台web端或App端跳转到第三方应用入口，第三方应用接收身份态和获取跳转人员信息的入口
+FSEndpointController.handle();
 ####2.第三方应用接收和解析开平推送消息的入口
-ThirdForwardController.parseReceiveMsg();
+FSCallbackController.decode();
 ####3.第三方应用跳转纷享登录/注册成功后接收身份态进行账号绑定的入口
-ThirdForwardController.processCallBack();
+AAAController.login()、AAAController.register();
 ####4.通过openUserId 换取成员信息的入口
-ThirdForwardController.getUserInfo();
+AddressBookController.getUserInfo();
 ####5.获取公司部门列表入口
-ThirdForwardController.getDeptList();
+AddressBookController.getDeptList();
 ####6.获取公司人员/部门人员列表入口
-ThirdForwardController.getCorpUserMap();
-####7.发送文本消息入口
-ThirdForwardController.sendTetxMessage();
-####8.发送模板消息入口
-ThirdForwardController.sendTemplateMessage();
-####9.通过appId+appSecret换取appAccessToken的入口
+AddressBookController.getCorpUserMap();
+####7.增加部门入口
+AddressBookController.addDept();
+####8.修改部门入口
+AddressBookController.modifyDept();
+####9.发送文本消息入口
+MessageController.sendTetxMessage();
+####10.通过appId+appSecret换取appAccessToken的入口
 OpenAPIUtils.getAppToken();
-####10.通过appAccessToken+permanentCode获取corpAccessToken的入口
+####11.通过appAccessToken+permanentCode获取corpAccessToken的入口
 OpenAPIUtils.getCorpToken();
 
 ###三、FAQ
