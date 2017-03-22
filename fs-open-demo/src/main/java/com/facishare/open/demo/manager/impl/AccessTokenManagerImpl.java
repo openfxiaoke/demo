@@ -182,7 +182,7 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
 
         } catch (Exception e) {
             LOG.error("getCorpAccessToken error message:{}, details:", e.getMessage(), e);
-
+             lock.unlock();
             // 重试一次，
             corpAccessTokenResult = getCorpAccessToken(appAccessToken);
             if (corpAccessTokenResult != null && corpAccessTokenResult.getErrorCode() == 0) {
