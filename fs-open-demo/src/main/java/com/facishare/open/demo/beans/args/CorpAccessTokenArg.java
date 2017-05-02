@@ -13,21 +13,34 @@ public class CorpAccessTokenArg implements Arg {
     private static final long serialVersionUID = 119087883828028381L;
 
     /**
-     * 应用的appAccessToken
+     * 应用ID
      */
-    private String appAccessToken;
+    private String appId;
+
+    /**
+     * 应用秘钥
+     */
+    private String appSecret;
 
     /**
      * 永久授权码
      */
     private String permanentCode;
 
-    public String getAppAccessToken() {
-        return appAccessToken;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setAppAccessToken(String appAccessToken) {
-        this.appAccessToken = appAccessToken;
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
     }
 
     public String getPermanentCode() {
@@ -41,7 +54,8 @@ public class CorpAccessTokenArg implements Arg {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("appAccessToken", appAccessToken)
+                .add("appId", appId)
+                .add("permanentCode", permanentCode)
                 .add("permanentCode", permanentCode)
                 .toString();
     }
