@@ -3,8 +3,6 @@ package com.facishare.open.demo.manager.impl;
 import java.util.Map;
 import javax.annotation.Resource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.facishare.open.demo.beans.CorpAccessToken;
@@ -17,14 +15,11 @@ import com.facishare.open.demo.exception.AppAccessTokenRequestException;
 import com.facishare.open.demo.exception.CorpAccessTokenRequestException;
 import com.facishare.open.demo.manager.AccessTokenManager;
 import com.facishare.open.demo.utils.Configuration;
-import com.facishare.open.demo.utils.Constants;
 import com.facishare.open.demo.utils.OpenAPIUtils;
 import com.google.common.collect.Maps;
 
 @Service("accessTokenManager")
 public class AccessTokenManagerImpl implements AccessTokenManager {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AccessTokenManagerImpl.class);
 
     private static final String KEY_EXPIRES_IN = "expiresIn";
 
@@ -48,17 +43,10 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
         corpAccessToken.setCorpId(result.getCorpId());
 
         Map<String, Object> token = Maps.newHashMap();
-        // 减去1分钟，以免过时
+        // 减去15分钟，以免过时
         token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 15 * 60) * 1000 + System.currentTimeMillis());
         token.put(KEY_TOKEN, corpAccessToken);
         return token;
-    }
-
-    private CorpAccessTokenResult getCorpAccessToken(String appAccessToken) throws CorpAccessTokenRequestException {
-        CorpAccessTokenArg arg = new CorpAccessTokenArg();
-        arg.setAppAccessToken(appAccessToken);
-        arg.setPermanentCode(configuration.getPermanentCode());
-        return OpenAPIUtils.getCorpToken(arg);
     }
 
     @Override
@@ -105,7 +93,7 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
             }
             appAccessToken = result.getAppAccessToken();
             token = Maps.newHashMap();
-            // 减去10分钟，以免过时
+            // 减去15分钟，以免过时
             token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 15 * 60) * 1000 + System.currentTimeMillis());
             token.put(KEY_TOKEN, appAccessToken);
             accessTokenMap.put(key, token);
@@ -133,50 +121,23 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
             if (token != null) {
                 return (CorpAccessToken) token.get(KEY_TOKEN);
             }
-
-            String appAccessToken;
-            try {
-                appAccessToken = getAppAccessToken();
-            } catch (AppAccessTokenRequestException e) {
-                LOG.error("getCorpAccessToken error message:{}, details:", e.getMessage(), e);
-                // 获取appAccessToken失败就重试一次，再次失败抛出异常
-                appAccessToken = getAppAccessToken();
+            
+            CorpAccessTokenArg arg = new CorpAccessTokenArg();
+            arg.setAppId(configuration.getAppId());
+            arg.setAppSecret(configuration.getAppSecret());
+            arg.setPermanentCode(configuration.getPermanentCode());
+            CorpAccessTokenResult corpAccessTokenResult =  OpenAPIUtils.getCorpToken(arg);
+            if (corpAccessTokenResult != null && corpAccessTokenResult.getErrorCode() == 0) {
+                token = setCorpAccessToken(corpAccessTokenResult);
             }
 
-            CorpAccessTokenResult corpAccessTokenResult = null;
-            try {
-                corpAccessTokenResult = getCorpAccessToken(appAccessToken);
-                if (corpAccessTokenResult != null && corpAccessTokenResult.getErrorCode() == 0) {
-                    token = setCorpAccessToken(corpAccessTokenResult);
-                } else if (corpAccessTokenResult == null
-                        || corpAccessTokenResult.getErrorCode() == Constants.interfaceResponseCode.APP_ACCESS_TOKEN_EXPIRED.code) {
-                    // accessToken不存在或者已经过期
-                    resetAppAccessToken();
-                    corpAccessTokenResult = getCorpAccessToken(appAccessToken);
-                    token = setCorpAccessToken(corpAccessTokenResult);
-                }
-
-                if (token != null) {
-                    accessTokenMap.put(key, token);
-                }
-            } catch (Exception e) {
-                LOG.error("getCorpAccessToken error message:{}, details:", e.getMessage(), e);
-                // 重试一次，
-                corpAccessTokenResult = getCorpAccessToken(appAccessToken);
-                if (corpAccessTokenResult != null && corpAccessTokenResult.getErrorCode() == 0) {
-                    token = setCorpAccessToken(corpAccessTokenResult);
-                    accessTokenMap.put(key, token);
-                }
-            }
             if (token == null) {
-                throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),
-                        corpAccessTokenResult.getErrorMessage());
+                throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),corpAccessTokenResult.getErrorMessage());
             }
 
             CorpAccessToken corpAccessToken = (CorpAccessToken) token.get(KEY_TOKEN);
             if (corpAccessToken == null) {
-                throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),
-                        corpAccessTokenResult.getErrorMessage());
+                throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),corpAccessTokenResult.getErrorMessage());
             }
             return corpAccessToken;
         }
