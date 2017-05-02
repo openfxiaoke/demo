@@ -67,7 +67,7 @@ public class OpenAPIUtils {
      * @throws Exception
      */
     public static CorpAccessTokenResult getCorpToken(CorpAccessTokenArg corpAccessTokenArg) {
-        String url = prefix + "/cgi/corpAccessToken/get";
+        String url = prefix + "/cgi/corpAccessToken/get/V2";
         return doPost(url, corpAccessTokenArg, CorpAccessTokenResult.class);
     }
 
@@ -253,19 +253,4 @@ public class OpenAPIUtils {
 
         return result;
     }
-
-    public static void main(String[] args) {
-        DeptUserListArg deptUserListArg = new DeptUserListArg();
-        deptUserListArg.setCorpAccessToken("E9D007B75DFBFDDC094D37F5B396C500");
-        deptUserListArg.setCorpId("FSCID_829F6665F559CF3791409D2C51A7D7AF");
-        deptUserListArg.setDepartmentId(1299);
-
-        DeptUserListResult DeptUserListResult = OpenAPIUtils.getDeptUserList(deptUserListArg);
-        System.out.println(DeptUserListResult.getErrorCode());
-        System.out.println(DeptUserListResult.getErrorMessage());
-
-        System.out.println(DeptUserListResult.getUserList());
-
-    }
-
 }
