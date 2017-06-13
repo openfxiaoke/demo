@@ -134,7 +134,7 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
             if (token == null) {
                 throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),corpAccessTokenResult.getErrorMessage());
             }
-
+            accessTokenMap.put(key, token);
             CorpAccessToken corpAccessToken = (CorpAccessToken) token.get(KEY_TOKEN);
             if (corpAccessToken == null) {
                 throw new CorpAccessTokenRequestException(corpAccessTokenResult.getErrorCode(),corpAccessTokenResult.getErrorMessage());
