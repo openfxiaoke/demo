@@ -142,5 +142,4 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
             return corpAccessToken;
         }
     }
-
 }
