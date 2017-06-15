@@ -90,16 +90,17 @@ public class HttpTookit {
         }
 
         HttpResponseMessageVO httpResponseMessageVO = new HttpResponseMessageVO();
-
+        CloseableHttpResponse response = null;
+        HttpEntity entity = null;
         try {
             StringEntity params = new StringEntity(parameters, CHARSET);
             HttpPost request = new HttpPost(url);
             request.addHeader("Content-type", "application/json");
             request.setEntity(params);
-            CloseableHttpResponse response = httpClient.execute(request);
+            response = httpClient.execute(request);
 
             int statusCode = response.getStatusLine().getStatusCode();
-            HttpEntity entity = response.getEntity();
+            entity = response.getEntity();
             httpResponseMessageVO.setHttpCode(Integer.toString(statusCode));
             
             if (statusCode == HttpStatus.SC_OK && entity != null) {
@@ -109,6 +110,17 @@ public class HttpTookit {
             LOG.error("sendPostByJson error, details:", e);
             throw new BaseException(Constants.interfaceException.INTERFACE_EXCEPTION.code,
                     Constants.interfaceException.INTERFACE_EXCEPTION.msg);
+        }finally{
+            try{
+                if(entity != null){
+                    EntityUtils.consume(entity);
+                }
+                if(response != null){
+                    response.close();
+                }
+            }catch(Exception e){
+                
+            }
         }
 
         return httpResponseMessageVO;
@@ -121,16 +133,17 @@ public class HttpTookit {
             result.setMsg(Constants.interfaceException.ILLEGAL_ARGUMENT.msg + ":" + url);
             return result;
         }
-
+        CloseableHttpResponse response = null;
+        HttpEntity entity = null;
         try {
             StringEntity params = new StringEntity(new Gson().toJson(arg), CHARSET);
             HttpPost request = new HttpPost(url);
             request.addHeader("Content-type", "application/json");
             request.setEntity(params);
-            CloseableHttpResponse response = httpClient.execute(request);
+            response = httpClient.execute(request);
 
             int statusCode = response.getStatusLine().getStatusCode();
-            HttpEntity entity = response.getEntity();
+            entity = response.getEntity();
             
             if (statusCode == HttpStatus.SC_OK && entity != null) {
                 result.setData(EntityUtils.toString(entity, CHARSET));
@@ -143,6 +156,17 @@ public class HttpTookit {
             LOG.error("sendPostByJson error, details:", e);
             result.setCode(Constants.interfaceException.INTERFACE_EXCEPTION.code);
             result.setMsg("发送请求异常,请检查url、参数的合法性！异常错误:" + e.getMessage());
+        }finally{
+            try{
+                if(entity != null){
+                    EntityUtils.consume(entity);
+                }
+                if(response != null){
+                    response.close();
+                }
+            }catch(Exception e){
+                
+            }
         }
         return result;
     }
