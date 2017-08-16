@@ -7,6 +7,13 @@ import com.facishare.open.demo.beans.args.AppTokenArg;
 import com.facishare.open.demo.beans.args.Arg;
 import com.facishare.open.demo.beans.args.BindAccountArg;
 import com.facishare.open.demo.beans.args.CorpAccessTokenArg;
+import com.facishare.open.demo.beans.args.CrmAddArg;
+import com.facishare.open.demo.beans.args.CrmChangeOwnerArg;
+import com.facishare.open.demo.beans.args.CrmDeleteArg;
+import com.facishare.open.demo.beans.args.CrmDescArg;
+import com.facishare.open.demo.beans.args.CrmGetArg;
+import com.facishare.open.demo.beans.args.CrmQueryArg;
+import com.facishare.open.demo.beans.args.CrmUpdateArg;
 import com.facishare.open.demo.beans.args.DeptAddModifyArg;
 import com.facishare.open.demo.beans.args.DeptListArg;
 import com.facishare.open.demo.beans.args.DeptUserListArg;
@@ -17,6 +24,10 @@ import com.facishare.open.demo.beans.results.AppTokenResult;
 import com.facishare.open.demo.beans.results.BaseResult;
 import com.facishare.open.demo.beans.results.BindAccountResult;
 import com.facishare.open.demo.beans.results.CorpAccessTokenResult;
+import com.facishare.open.demo.beans.results.CrmAddResult;
+import com.facishare.open.demo.beans.results.CrmDescResult;
+import com.facishare.open.demo.beans.results.CrmGetResult;
+import com.facishare.open.demo.beans.results.CrmQueryResult;
 import com.facishare.open.demo.beans.results.DeptAddResult;
 import com.facishare.open.demo.beans.results.DeptListResult;
 import com.facishare.open.demo.beans.results.DeptUpdateResult;
@@ -141,6 +152,62 @@ public class OpenAPIUtils {
     public static TextMsgResult sendTextMsg(TextMsgArg textMsgArg) {
         String url = prefix + "/cgi/message/send";
         return doPost(url, textMsgArg, TextMsgResult.class);
+    }
+    
+    /**
+     * CRM 字段描述  元数据接口
+     */
+    public static CrmDescResult getCrmDesc(CrmDescArg arg) {
+        String url = prefix + "/cgi/crm/object/describe";
+        return doPost(url, arg, CrmDescResult.class);
+    }
+    
+    /**
+     * CRM 字段描述  修改负责人
+     */
+    public static BaseResult changeCrmOwner(CrmChangeOwnerArg arg) {
+        String url = prefix + "/cgi/crm/data/changeOwner";
+        return doPost(url, arg, BaseResult.class);
+    }
+    
+    /**
+     * CRM添加 元数据接口
+     */
+    public static CrmAddResult createCrmData(CrmAddArg arg) {
+        String url = prefix + "/cgi/crm/data/create";
+        return doPost(url, arg, CrmAddResult.class);
+    }
+
+    /**
+     * CRM修改 元数据接口
+     */
+    public static BaseResult updateCrmData(CrmUpdateArg arg) {
+        String url = prefix + "/cgi/crm/data/update";
+        return doPost(url, arg, BaseResult.class);
+    }
+
+    /**
+     * CRM作废 元数据接口
+     */
+    public static BaseResult dropCrmData(CrmDeleteArg arg) {
+        String url = prefix + "/cgi/crm/data/drop";
+        return doPost(url, arg, BaseResult.class);
+    }
+
+    /**
+     * CRM查询列表 元数据接口
+     */
+    public static CrmQueryResult queryCrmData(CrmQueryArg arg) {
+        String url = prefix + "/cgi/crm/data/query";
+        return doPost(url, arg, CrmQueryResult.class);
+    }
+
+    /**
+     * CRM获取详情 元数据接口
+     */
+    public static CrmGetResult getData(CrmGetArg arg) {
+        String url = prefix + "/cgi/crm/data/get";
+        return doPost(url, arg, CrmGetResult.class);
     }
 
     /**
