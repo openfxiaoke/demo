@@ -100,11 +100,11 @@ public class Test {
 
 	public static void main(String[] args) throws Exception {
 		//纷享openUserId
-		String openUserId = "FSUID_2CE94A1047E4463D2A00BFB03E15159C";
+		String openUserId = "";
 		String apiName = "OpportunityObj";// /todo
 		long beginTime = 4522233333l;// todo
-		String corpAccessToken = "EAD881F288A34AC6E327B7D171B6E91B";// todo
-		String corpId = "FSCID_02877AD9FDE6930E2E263C317F991187";// todo
+		String corpAccessToken = "";// todo
+		String corpId = "";// todo
 		Gson gson = new Gson();
 		
 		CrmQueryArg arg = new CrmQueryArg();
