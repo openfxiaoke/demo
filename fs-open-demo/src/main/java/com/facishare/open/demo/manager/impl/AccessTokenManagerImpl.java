@@ -43,8 +43,8 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
         corpAccessToken.setCorpId(result.getCorpId());
 
         Map<String, Object> token = Maps.newHashMap();
-        // 减去15分钟，以免过时
-        token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 15 * 60) * 1000 + System.currentTimeMillis());
+        // 减去3分钟，以免过时
+        token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 3 * 60) * 1000 + System.currentTimeMillis());
         token.put(KEY_TOKEN, corpAccessToken);
         return token;
     }
@@ -93,8 +93,8 @@ public class AccessTokenManagerImpl implements AccessTokenManager {
             }
             appAccessToken = result.getAppAccessToken();
             token = Maps.newHashMap();
-            // 减去15分钟，以免过时
-            token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 15 * 60) * 1000 + System.currentTimeMillis());
+            // 减去3分钟，以免过时
+            token.put(KEY_EXPIRES_IN, (result.getExpiresIn() - 3 * 60) * 1000 + System.currentTimeMillis());
             token.put(KEY_TOKEN, appAccessToken);
             accessTokenMap.put(key, token);
             return appAccessToken;
